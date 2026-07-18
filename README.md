@@ -52,5 +52,7 @@ Al evaluar el mejor modelo consolidado frente a las 460 imágenes de validación
 
 ## 6. Conclusiones
 * El uso de *Transfer Learning* junto con un *Fine-Tuning* enfocado en la etapa final (`layer4`) demostró ser una estrategia sumamente efectiva, logrando un 94% de exactitud general con un tiempo de cómputo e iteración mínimos.
+  
 * Las técnicas de regularización aplicadas (`Dropout` al 50%, `Weight Decay` en AdamW y el aumento de datos mediante rotaciones y reflejos) funcionaron en perfecta sincronía con la herramienta de *Early Stopping*, frenando el bucle antes de que la red memorizara por completo el set de entrenamiento y perdiera capacidad de generalización.
+  
 *El modelo alcanzó un Recall de 99% para la clase "00-damage", lo que demuestra una alta capacidad para detectar vehículos realmente dañados y minimizar los falsos negativos. Esta característica resulta especialmente relevante en aplicaciones de inspección automática para compañías aseguradoras, donde omitir un vehículo dañado puede generar evaluaciones incorrectas y mayores costos operacionales.
