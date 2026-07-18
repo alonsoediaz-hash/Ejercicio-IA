@@ -36,7 +36,7 @@ A continuación, se visualiza la evolución del rendimiento:
 <img src="curva_accuracy.png" alt="Curva de Accuracy" width="500"/>
 
 ### Análisis Crítico del Rendimiento:
-* **Convergencia rápida gracias al Transfer Learning.:** Al utilizar los pesos preentrenados de ResNet50 sobre ImageNet, el modelo logró adaptarse rápidamente a la tarea de clasificación, alcanzando su mejor capacidad de generalización desde la primera época de entrenamiento.
+* **Convergencia rápida:** Al utilizar los pesos preentrenados de ResNet50 sobre ImageNet, el modelo logró adaptarse rápidamente a la tarea de clasificación, alcanzando su mejor capacidad de generalización desde la primera época de entrenamiento.
 * **Comportamiento del Overfitting:** A partir de la época 2, mientras la curva de entrenamiento (`Train`) continuaba subiendo progresivamente hacia el 98%, la precisión de validación empezó a oscilar ligeramente a la baja. La paciencia configurada intervino con éxito deteniendo el proceso a tiempo en la época 7.
 
 ### Evaluación en el Conjunto de Validación:
