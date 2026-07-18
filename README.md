@@ -17,7 +17,7 @@ El dataset (rescatado dsde Kaggle llamado Car damage detection de Anuj Shah) uti
 ## 3. Justificación del Modelo Seleccionado
 Se seleccionó la arquitectura **ResNet50** preentrenada con el dataset `IMAGENET1K_V1`. Las razones técnicas de su elección son:
 * **Conexiones residuales (Skip Connections):** Permiten entrenar redes profundas evitando la degradación del gradiente.
-* **Transfer Learning:** Aprovecha características visuales complejas (bordes, texturas, formas geométricas) ya aprendidas en millones de imágenes, acelerando la convergencia para nuestra tarea específica de detectar deformaciones en carrocerías.
+* **Transfer Learning:** Aprovecha características visuales complejas (bordes, texturas, formas geométricas) ya aprendidas en millones de imágenes, acelerando la convergencia para la tarea específica de detectar deformaciones en carrocerías.
 * **Eficiencia:** Logra un equilibrio óptimo entre costo computacional y precisión en comparación con modelos más pesados.
 
 ## 4. Metodología Aplicada (Paso a Paso)
