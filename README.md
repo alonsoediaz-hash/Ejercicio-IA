@@ -50,8 +50,7 @@ Al evaluar el mejor modelo consolidado frente a las 460 imágenes de validación
 | **Macro Avg** | 0.94 | 0.94 | 0.94 | 460 |
 | **Weighted Avg** | 0.94 | 0.94 | 0.94 | 460 |
 
-
 ## 6. Conclusiones
-* El uso de Transfer Learning junto con un Fine-Tuning enfocado en `layer4` demostró ser una estrategia sumamente efectiva, logrando un 95% de exactitud con un tiempo de entrenamiento reducido.
-* Las técnicas de regularización aplicadas (`Dropout` al 50%, `Weight Decay` en AdamW y el aumento de datos en el cargador de entrenamiento) funcionaron de manera óptima, ya que las curvas de aprendizaje mantuvieron una brecha controlada entre el entrenamiento y la validación, evitando que el modelo memorizara los datos.
-* El modelo es altamente confiable para tareas de pre-evaluación en entornos reales, logrando diferenciar con alta precisión cambios sutiles en las estructuras y líneas originales de los vehículos chocado versus sanos.
+* El uso de *Transfer Learning* junto con un *Fine-Tuning* enfocado en la etapa final (`layer4`) demostró ser una estrategia sumamente efectiva, logrando un 94% de exactitud general con un tiempo de cómputo e iteración mínimos.
+* Las técnicas de regularización aplicadas (`Dropout` al 50%, `Weight Decay` en AdamW y el aumento de datos mediante rotaciones y reflejos) funcionaron en perfecta sincronía con la herramienta de *Early Stopping*, frenando el bucle antes de que la red memorizara por completo el set de entrenamiento y perdiera capacidad de generalización.
+* El modelo es altamente confiable para tareas de pre-evaluación en entornos reales, logrando diferenciar cambios estructurales complejos en las carrocerías y garantizar que prácticamente ningún vehículo dañado sea clasificado erróneamente como sano (99% de Recall).
