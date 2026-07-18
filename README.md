@@ -1,5 +1,7 @@
 # Clasificación Automática de Daños Vehiculares mediante Deep Learning
 
+## Estudiante: Alonso Díaz Donoso
+
 ## 1. Definición del Problema
 En la industria automotriz y de seguros, la evaluación manual de daños en vehículos tras un siniestro es un proceso costoso, propenso a errores humanos y lento. Este proyecto aborda este problema, respondiendo a la pregunta: *¿Es posible clasificar de forma automática y precisa si un vehículo ha sufrido daños estructurales a partir de una fotografía?* Desarrollar una solución automatizada optimiza los tiempos de respuesta para los seguros y mejora la transparencia del servicio para los usuarios.
 
