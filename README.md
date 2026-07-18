@@ -24,7 +24,7 @@ Se seleccionó la arquitectura **ResNet50** preentrenada con el dataset `IMAGENE
 1. **Análisis Exploratorio de Datos (EDA):** Verificación del balance de clases, inspección visual de muestras de ambas categorías y análisis estadístico de resoluciones e intensidad de canales de color.
 2. **Procesamiento y Aumento de Datos (Regularización):** Se aplicaron transformaciones de redimensionamiento y normalización de ImageNet. Para combatir el sobreajuste (overfitting), se implementó aumento de datos mediante rotaciones aleatorias (`15°`) y giros horizontales (`RandomHorizontalFlip`).
 3. **Modificación de la Arquitectura:** Se congelaron los pesos de las primeras capas y se sustituyó la capa final (`model.fc`) por un bloque secuencial compuesto por `nn.Dropout(0.5)` y una capa lineal adaptada a nuestras 2 clases objetivo.
-4. **Fine-Tuning Parcial:** Se desbloquearon los parámetros de la última etapa convolucional (`model.layer4`) y de la nueva capa lineal para ajustar los filtros específicos a texturas de choques y abolladuras.
+4. **Fine-Tuning Parcial:** Se desbloquearon los parámetros de la última etapa convolucional (model.layer4) y de la nueva capa totalmente conectada (model.fc), manteniendo congeladas las capas iniciales de la red para conservar las características visuales generales previamente aprendidas sobre ImageNet. De esta manera, el modelo pudo ajustar los filtros a patrones específicos de daños vehiculares, como deformaciones, abolladuras y zonas de impacto.
 5. **Optimización:** Uso del optimizador `AdamW` con una tasa de aprendizaje baja ($lr = 0.0001$) y penalización de pesos (`weight_decay = 0.01`). La función de pérdida empleada fue `CrossEntropyLoss`.
 6. **Entrenamiento y Control:** Bucle de 30 épocas monitorizado con **Early Stopping** (paciencia de 6 épocas) basado en el rendimiento del conjunto de validación.
 
@@ -36,7 +36,7 @@ A continuación, se visualiza la evolución del rendimiento:
 <img src="curva_accuracy.png" alt="Curva de Accuracy" width="500"/>
 
 ### Análisis Crítico del Rendimiento:
-* **Convergencia rápida gracias al Transfer Learning.:** Al utilizar los pesos preentrenados de ResNet50 (*Transfer Learning*), el modelo demostró una velocidad de adaptación tremenda, logrando su punto óptimo de generalización casi de inmediato (Época 1).
+* **Convergencia rápida gracias al Transfer Learning.:** Al utilizar los pesos preentrenados de ResNet50 sobre ImageNet, el modelo logró adaptarse rápidamente a la tarea de clasificación, alcanzando su mejor capacidad de generalización desde la primera época de entrenamiento.
 * **Comportamiento del Overfitting:** A partir de la época 2, mientras la curva de entrenamiento (`Train`) continuaba subiendo progresivamente hacia el 98%, la precisión de validación empezó a oscilar ligeramente a la baja. La paciencia configurada intervino con éxito deteniendo el proceso a tiempo en la época 7.
 
 ### Evaluación en el Conjunto de Validación:
