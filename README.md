@@ -29,14 +29,27 @@ Se seleccionó la arquitectura **ResNet50** preentrenada con el dataset `IMAGENE
 6. **Entrenamiento y Control:** Bucle de 30 épocas monitorizado con **Early Stopping** (paciencia de 6 épocas) basado en el rendimiento del conjunto de validación.
 
 ## 5. Resultados Obtenidos
-El entrenamiento se detuvo de forma anticipada en la **época 15** al detectar un estancamiento en la pérdida de validación, previniendo el overfitting. El **mejor modelo guardado** se obtuvo en la **época 9** con las siguientes métricas en el set de validación:
+El proceso de optimización fue controlado mediante *Early Stopping*, deteniendo el entrenamiento de manera anticipada en la **época 7** al notar una tendencia al estancamiento en la pérdida de validación, protegiendo así al modelo contra el sobreajuste (overfitting). El mejor estado de la red fue guardado automáticamente en la **época 1**, alcanzando una exactitud de validación inicial del 93.91%.
 
-* **Accuracy General:** 95%
-* **Reporte de Clasificación:**
-  * `00-damage`: Precisión: 0.94 | Recall: 0.96 | F1-score: 0.95
-  * `01-whole`: Precisión: 0.96 | Recall: 0.94 | F1-score: 0.95
+A continuación, se visualiza la evolución del rendimiento:
 
-La matriz de confusión demostró un comportamiento sumamente equilibrado, cometiendo muy pocos falsos positivos y falsos negativos (apenas 9 errores en autos dañados y 14 en autos sanos de un total de 460 imágenes de prueba). Adicionalmente, al probar el modelo con una imagen externa del almacenamiento local (`autodañado.jpg`), este predijo correctamente la clase `00-damage` con una **confianza del 99.92%**.
+<img src="curva_accuracy.png" alt="Curva de Accuracy" width="500"/>
+
+### Análisis Crítico del Rendimiento:
+* **Convergencia Inmediata:** Al utilizar los pesos preentrenados de ResNet50 (*Transfer Learning*), el modelo demostró una velocidad de adaptación tremenda, logrando su punto óptimo de generalización casi de inmediato (Época 1).
+* **Comportamiento del Overfitting:** A partir de la época 2, mientras la curva de entrenamiento (`Train`) continuaba subiendo progresivamente hacia el 98%, la precisión de validación empezó a oscilar ligeramente a la baja. La paciencia configurada intervino con éxito deteniendo el proceso a tiempo en la época 7.
+
+### Evaluación en el Conjunto de Validación:
+Al evaluar el mejor modelo consolidado frente a las 460 imágenes de validación, se obtuvieron las siguientes métricas:
+| Clase | Precision | Recall | F1-Score | Support |
+| :--- | :---: | :---: | :---: | :---: |
+| **00-damage** | 0.90 | 0.99 | 0.94 | 230 |
+| **01-whole** | 0.99 | 0.89 | 0.94 | 230 |
+| | | | | |
+| **Accuracy** | | | **0.94** | **460** |
+| **Macro Avg** | 0.94 | 0.94 | 0.94 | 460 |
+| **Weighted Avg** | 0.94 | 0.94 | 0.94 | 460 |
+
 
 ## 6. Conclusiones
 * El uso de Transfer Learning junto con un Fine-Tuning enfocado en `layer4` demostró ser una estrategia sumamente efectiva, logrando un 95% de exactitud con un tiempo de entrenamiento reducido.
