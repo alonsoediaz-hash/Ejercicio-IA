@@ -36,7 +36,7 @@ A continuación, se visualiza la evolución del rendimiento:
 <img src="curva_accuracy.png" alt="Curva de Accuracy" width="500"/>
 
 ### Análisis Crítico del Rendimiento:
-* **Convergencia Inmediata:** Al utilizar los pesos preentrenados de ResNet50 (*Transfer Learning*), el modelo demostró una velocidad de adaptación tremenda, logrando su punto óptimo de generalización casi de inmediato (Época 1).
+* **Convergencia rápida gracias al Transfer Learning.:** Al utilizar los pesos preentrenados de ResNet50 (*Transfer Learning*), el modelo demostró una velocidad de adaptación tremenda, logrando su punto óptimo de generalización casi de inmediato (Época 1).
 * **Comportamiento del Overfitting:** A partir de la época 2, mientras la curva de entrenamiento (`Train`) continuaba subiendo progresivamente hacia el 98%, la precisión de validación empezó a oscilar ligeramente a la baja. La paciencia configurada intervino con éxito deteniendo el proceso a tiempo en la época 7.
 
 ### Evaluación en el Conjunto de Validación:
@@ -53,4 +53,4 @@ Al evaluar el mejor modelo consolidado frente a las 460 imágenes de validación
 ## 6. Conclusiones
 * El uso de *Transfer Learning* junto con un *Fine-Tuning* enfocado en la etapa final (`layer4`) demostró ser una estrategia sumamente efectiva, logrando un 94% de exactitud general con un tiempo de cómputo e iteración mínimos.
 * Las técnicas de regularización aplicadas (`Dropout` al 50%, `Weight Decay` en AdamW y el aumento de datos mediante rotaciones y reflejos) funcionaron en perfecta sincronía con la herramienta de *Early Stopping*, frenando el bucle antes de que la red memorizara por completo el set de entrenamiento y perdiera capacidad de generalización.
-* El modelo es altamente confiable para tareas de pre-evaluación en entornos reales, logrando diferenciar cambios estructurales complejos en las carrocerías y garantizar que prácticamente ningún vehículo dañado sea clasificado erróneamente como sano (99% de Recall).
+*El modelo alcanzó un Recall de 99% para la clase "00-damage", lo que indica una alta capacidad para detectar vehículos realmente dañados, minimizando los falsos negativos, aspecto especialmente relevante para aplicaciones en compañías aseguradoras.
