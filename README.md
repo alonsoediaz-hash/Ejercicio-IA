@@ -1,10 +1,10 @@
 # Clasificación Automática de Daños Vehiculares mediante Deep Learning
 
 ## 1. Definición del Problema
-En la industria automotriz y de seguros, la evaluación manual de daños en vehículos tras un siniestro es un proceso costoso, propenso a errores humanos y lento. Este proyecto aborda este problema mediante visión por computadora, respondiendo a la pregunta: *¿Es posible clasificar de forma automática y precisa si un vehículo ha sufrido daños estructurales a partir de una fotografía?* Desarrollar una solución automatizada optimiza los tiempos de respuesta para las aseguradoras y mejora la transparencia del servicio para los usuarios.
+En la industria automotriz y de seguros, la evaluación manual de daños en vehículos tras un siniestro es un proceso costoso, propenso a errores humanos y lento. Este proyecto aborda este problema, respondiendo a la pregunta: *¿Es posible clasificar de forma automática y precisa si un vehículo ha sufrido daños estructurales a partir de una fotografía?* Desarrollar una solución automatizada optimiza los tiempos de respuesta para los seguros y mejora la transparencia del servicio para los usuarios.
 
 ## 2. Breve Descripción del Dataset y Fuente
-El dataset utilizado contiene imágenes de vehículos divididas de forma equitativa en dos categorías: `00-damage` (autos dañados/chocados) y `01-whole` (autos sanos/completos). El volumen de datos se distribuye de la siguiente manera tras el análisis exploratorio (EDA):
+El dataset (rescatado dsde Kaggle llamado Car damage detection de Anuj Shah) utilizado contiene imágenes de vehículos divididas de forma equitativa en dos categorías: `00-damage` (autos dañados/chocados) y `01-whole` (autos sanos/completos). El volumen de datos se distribuye de la siguiente manera tras el análisis exploratorio (EDA):
 
 | Conjunto | Autos Dañados (`00-damage`) | Autos Sanos (`01-whole`) | Total por Conjunto |
 | :--- | :---: | :---: | :---: |
